@@ -1,1 +1,116 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gestión de Libros</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="container">
+    <h1> Gestión de Libros</h1>
+    <p class="muted">CRUD conectado a tu API en <code>/api/libros</code></p>
+  </header>
 
+  <main class="container grid">
+    <!-- FORM: AGREGAR -->
+    <section class="card">
+      <h2>Agregar libro</h2>
+
+      <form id="formAgregar" autocomplete="off">
+        <label>
+          Título
+          <input id="titulo" name="titulo" type="text" placeholder="Ej. Rayuela" required />
+        </label>
+
+        <label>
+          Autor
+          <input id="autor" name="autor" type="text" placeholder="Ej. Julio Cortázar" required />
+        </label>
+
+        <button type="submit" class="btn primary">Agregar</button>
+      </form>
+
+      <p id="msgAgregar" class="msg" aria-live="polite"></p>
+    </section>
+
+    <!-- LISTA -->
+    <section class="card">
+      <div class="row">
+        <h2>Lista de libros</h2>
+        <button id="btnRefrescar" class="btn">Refrescar</button>
+      </div>
+
+      <div class="tableWrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 70px;">ID</th>
+              <th>Título</th>
+              <th>Autor</th>
+              <th style="width: 220px;">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tbodyLibros">
+            <!-- JS renderiza aquí -->
+          </tbody>
+        </table>
+      </div>
+
+      <p id="msgLista" class="msg" aria-live="polite"></p>
+    </section>
+
+    <!-- FORM: EDITAR -->
+    <section class="card">
+      <h2>Actualizar libro</h2>
+      <p class="muted">Puedes dar clic en “Editar” en la tabla para llenar este formulario.</p>
+
+      <form id="formEditar" autocomplete="off">
+        <label>
+          ID
+          <input id="editId" name="id" type="number" min="1" placeholder="Ej. 2" required />
+        </label>
+
+        <label>
+          Nuevo título (opcional)
+          <input id="editTitulo" name="titulo" type="text" placeholder="Dejar vacío para no cambiar" />
+        </label>
+
+        <label>
+          Nuevo autor (opcional)
+          <input id="editAutor" name="autor" type="text" placeholder="Dejar vacío para no cambiar" />
+        </label>
+
+        <div class="row">
+          <button type="submit" class="btn primary">Guardar cambios</button>
+          <button type="button" id="btnLimpiarEdicion" class="btn">Limpiar</button>
+        </div>
+      </form>
+
+      <p id="msgEditar" class="msg" aria-live="polite"></p>
+    </section>
+
+    <!-- FORM: ELIMINAR -->
+    <section class="card">
+      <h2>Eliminar libro</h2>
+
+      <form id="formEliminar" autocomplete="off">
+        <label>
+          ID a eliminar
+          <input id="deleteId" name="id" type="number" min="1" placeholder="Ej. 3" required />
+        </label>
+
+        <button type="submit" class="btn danger">Eliminar</button>
+      </form>
+
+      <p id="msgEliminar" class="msg" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <small class="muted">Servidor: <code>http://localhost:3000</code></small>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>
